@@ -3,7 +3,7 @@ from github import Github, GithubException, InputGitAuthor
 
 START_SECTION = "<!--START_SECTION:jokes-quotes-->"
 END_SECTION = "<!--END_SECTION:jokes-quotes-->"
-listReg = f"${START_SECTION}[\\s\\S]+${END_SECTION}"
+listReg = f"${START_SECTION}[\\s\\S]+{END_SECTION}"
 GH_TOKEN = os.getenv("INPUT_GH_TOKEN")
 GH_REPO = os.getenv("GITHUB_REPOSITORY")
 GH_USERNAME = os.getenv("INPUT_USERNAME")
