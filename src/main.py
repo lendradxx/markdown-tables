@@ -1,8 +1,8 @@
 import os, sys, base64, re, requests, traceback
 from github import Github, GithubException, InputGitAuthor
 
-START_SECTION = "<!--START_SECTION:jokesquotes-->"
-END_SECTION = "<!--END_SECTION:jokesquotes-->"
+START_SECTION = "<!--START_SECTION:tables-->"
+END_SECTION = "<!--END_SECTION:tables-->"
 listReg = f"{START_SECTION}[\\s\\S]+{END_SECTION}"
 GH_TOKEN = os.getenv("INPUT_GH_TOKEN")
 GH_REPO = os.getenv("GITHUB_REPOSITORY")
@@ -63,7 +63,6 @@ if __name__ == "__main__":
             committer=commiter,
         )
 
-        print(new_readme)
         print("Updating file")
 
     except Exception as e:
