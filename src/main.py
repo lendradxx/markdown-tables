@@ -53,6 +53,7 @@ if __name__ == "__main__":
         readme = decodeReadme(contents)
         new_readme = generateNewReadme(contents=generateTables(), readme=readme)
         commiter = InputGitAuthor(GH_USERNAME, GH_EMAIL)
+        print(f"{GH_USERNAME}/{GH_REPO}")
 
         if new_readme != readme:
             repo.update_file(
