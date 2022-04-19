@@ -1,0 +1,29 @@
+name: "jokes-and-quotes-readme"
+author: "Lendra"
+description: "Github action to create jokes and quotes table in readme"
+
+inputs:
+  GH_TOKEN:
+    description: "GitHub token"
+    required: true
+    default: ${{ github.token }}
+  REPOSITORY:
+    description: "Your github repo"
+    required: false
+    default: ${{ github.repository }}
+  BRANCH:
+    description: "Your repo branch"
+    required: false
+    default: "master"
+  EMAIL:
+    description: "Your email"
+    required: false
+    default: "github-actions[bot]@users.noreply.github.com"
+  USERNAME:
+    description: "Your username"
+    required: false
+    default: "github-actions[bot]"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
