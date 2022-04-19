@@ -43,28 +43,27 @@ def generateTables():
 
 
 if __name__ == "__main__":
-    print(f"{GH_USERNAME}/{GH_REPO}")
-    # try:
-    #     if GH_TOKEN is None:
-    #         raise Exception("Please input the token!")
+    try:
+        if GH_TOKEN is None:
+            raise Exception("Please input the token!")
 
-    #     gh = Github(GH_TOKEN)
-    #     repo = gh.get_repo(f"{GH_USERNAME}/{GH_REPO}")
-    #     contents = repo.get_readme()
-    #     readme = decodeReadme(contents)
-    #     new_readme = generateNewReadme(contents=generateTables(), readme=readme)
-    #     commiter = InputGitAuthor(GH_USERNAME, GH_EMAIL)
+        gh = Github(GH_TOKEN)
+        repo = gh.get_repo(f"{GH_REPO}")
+        contents = repo.get_readme()
+        readme = decodeReadme(contents)
+        new_readme = generateNewReadme(contents=generateTables(), readme=readme)
+        commiter = InputGitAuthor(GH_USERNAME, GH_EMAIL)
 
-    #     if new_readme != readme:
-    #         repo.update_file(
-    #             path=contents.path,
-    #             message="Updating file",
-    #             content=new_readme,
-    #             sha=contents.sha,
-    #             branch=GH_BRANCH,
-    #             committer=commiter,
-    #         )
+        if new_readme != readme:
+            repo.update_file(
+                path=contents.path,
+                message="Updating file",
+                content=new_readme,
+                sha=contents.sha,
+                branch=GH_BRANCH,
+                committer=commiter,
+            )
 
-    # except Exception as e:
-    #     traceback.print_exc()
-    #     print(f"Exeception Occured: {str(e)}")
+    except Exception as e:
+        traceback.print_exc()
+        print(f"Exeception Occured: {str(e)}")
