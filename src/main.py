@@ -5,7 +5,7 @@ START_SECTION = "<!--START_SECTION:jokes-quotes-->"
 END_SECTION = "<!--END_SECTION:jokes-quotes-->"
 listReg = f"${START_SECTION}[\\s\\S]+${END_SECTION}"
 GH_TOKEN = os.getenv("INPUT_GH_TOKEN")
-GH_REPO = os.getenv("INPUT_REPOSITORY")
+GH_REPO = os.getenv("GITHUB_REPOSITORY")
 GH_USERNAME = os.getenv("INPUT_USERNAME")
 GH_EMAIL = os.getenv("INPUT_EMAIL")
 GH_BRANCH = os.getenv("INPUT_BRANCH")
@@ -43,11 +43,11 @@ def generateTables():
 
 
 if __name__ == "__main__":
+    print(f"{GH_USERNAME}/{GH_REPO}")
     try:
         if GH_TOKEN is None:
             raise Exception("Please input the token!")
 
-        print(f"{GH_USERNAME}/{GH_REPO}")
         gh = Github(GH_TOKEN)
         repo = gh.get_repo(f"{GH_USERNAME}/{GH_REPO}")
         contents = repo.get_readme()
