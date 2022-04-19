@@ -47,8 +47,8 @@ def generateTables():
     memes = getRandomMemes()
     imageMemes = f"<img src=\"{memes['image']}\"/>"
     upper: str = "| Quotes | Jokes | Memes | \n| :-----: | :-----: | :-----: |"
-    middle: str = f"| {quotes['quote']} | {jokes['question']}| {memes['title']} |"
-    bottom: str = f"| {quotes['author']} | {jokes['answer']}| {imageMemes} |"
+    middle: str = f"| {quotes['quote']} | {jokes['question']}| {imageMemes} |"
+    bottom: str = f"| {quotes['author']} | {jokes['answer']}| {memes['title']} |"
     return f"{upper}\n{middle}\n{bottom}"
 
 
