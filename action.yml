@@ -10,7 +10,7 @@ inputs:
   REPOSITORY:
     description: "Your github repo"
     required: false
-    default: ${{ github.repository }}
+    default: ${{ github.event.repository.name }}
   BRANCH:
     description: "Your repo branch"
     required: false
