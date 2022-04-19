@@ -62,6 +62,9 @@ if __name__ == "__main__":
             branch=GH_BRANCH,
             committer=commiter,
         )
+        print(readme)
+        print(new_readme)
+        print("Updating file")
 
     except Exception as e:
         traceback.print_exc()
