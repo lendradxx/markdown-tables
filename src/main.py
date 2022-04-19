@@ -47,13 +47,13 @@ if __name__ == "__main__":
         if GH_TOKEN is None:
             raise Exception("Please input the token!")
 
+        print(f"{GH_USERNAME}/{GH_REPO}")
         gh = Github(GH_TOKEN)
         repo = gh.get_repo(f"{GH_USERNAME}/{GH_REPO}")
         contents = repo.get_readme()
         readme = decodeReadme(contents)
         new_readme = generateNewReadme(contents=generateTables(), readme=readme)
         commiter = InputGitAuthor(GH_USERNAME, GH_EMAIL)
-        print(f"{GH_USERNAME}/{GH_REPO}")
 
         if new_readme != readme:
             repo.update_file(
@@ -62,7 +62,7 @@ if __name__ == "__main__":
                 content=new_readme,
                 sha=contents.sha,
                 branch=GH_BRANCH,
-                committer=commiter
+                committer=commiter,
             )
 
     except Exception as e:
