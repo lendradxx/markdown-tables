@@ -11,14 +11,6 @@ GH_EMAIL = os.getenv("INPUT_EMAIL")
 GH_BRANCH = os.getenv("INPUT_BRANCH")
 
 
-def getRandomMemes():
-    url: str = "https://meme-api.herokuapp.com/gimme/programmerhumor"
-    data = requests.get(url=url).json()
-    return {
-        "title": data["title"],
-        "image": data["url"]
-    }
-
 def getRandomQoutes():
     url: str = "https://api.quotable.io/random"
     data = requests.get(url=url).json()
@@ -44,11 +36,9 @@ def generateNewReadme(contents: str, readme: str):
 def generateTables():
     jokes = getRandomJokes()
     quotes = getRandomQoutes()
-    memes = getRandomMemes()
-    imageMemes = f"<img src=\"{memes['image']}\"/>"
-    upper: str = "| Quotes | Jokes | Memes | \n| :-----: | :-----: | :-----: |"
-    middle: str = f"| {quotes['quote']} | {jokes['question']}| {imageMemes} |"
-    bottom: str = f"| {quotes['author']} | {jokes['answer']}| {memes['title']} |"
+    upper: str = "| Quotes | Jokes | Memes | \n| :-----: | :-----: |"
+    middle: str = f"| {quotes['quote']} | {jokes['question']}|"
+    bottom: str = f"| {quotes['author']} | {jokes['answer']}|"
     return f"{upper}\n{middle}\n{bottom}"
 
 
