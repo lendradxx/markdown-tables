@@ -54,15 +54,14 @@ if __name__ == "__main__":
         new_readme = generateNewReadme(contents=generateTables(), readme=readme)
         commiter = InputGitAuthor(GH_USERNAME, GH_EMAIL)
 
-        if new_readme != readme:
-            repo.update_file(
-                path=contents.path,
-                message="Updating file",
-                content=new_readme,
-                sha=contents.sha,
-                branch=GH_BRANCH,
-                committer=commiter,
-            )
+        repo.update_file(
+            path=contents.path,
+            message="Updating file",
+            content=new_readme,
+            sha=contents.sha,
+            branch=GH_BRANCH,
+            committer=commiter,
+        )
 
     except Exception as e:
         traceback.print_exc()
