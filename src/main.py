@@ -36,7 +36,7 @@ def generateNewReadme(contents: str, readme: str):
 def generateTables():
     jokes = getRandomJokes()
     quotes = getRandomQoutes()
-    upper: str = "| Quotes | Jokes | Memes | \n| :-----: | :-----: |"
+    upper: str = "| Quotes | Jokes |\n| :-----: | :-----: |"
     middle: str = f"| {quotes['quote']} | {jokes['question']}|"
     bottom: str = f"| {quotes['author']} | {jokes['answer']}|"
     return f"{upper}\n{middle}\n{bottom}"
