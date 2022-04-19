@@ -50,7 +50,7 @@ if __name__ == "__main__":
         gh = Github(GH_TOKEN)
         repo = gh.get_repo(f"{GH_REPO}")
         contents = repo.get_readme()
-        readme = decodeReadme(contents)
+        readme = decodeReadme(contents.content)
         new_readme = generateNewReadme(contents=generateTables(), readme=readme)
         commiter = InputGitAuthor(GH_USERNAME, GH_EMAIL)
 
